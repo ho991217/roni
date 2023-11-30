@@ -1,0 +1,102 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>로니님 퇴사까지</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+      }
+      #container {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      #title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 0.75rem;
+        padding: 2rem 4rem;
+        color: white;
+        text-align: center;
+        font-size: 5rem;
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        box-shadow: 0 10px 30px 3px rgba(0, 0, 0, 0.25);
+        font-weight: 400;
+      }
+      .cell-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1rem;
+      }
+      .time {
+        font-size: 5rem;
+        line-height: 0.75em;
+        font-weight: 800;
+        margin-bottom: 0.33rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="title-container">
+        <div class="cell-container">
+          <span class="time" id="day">0</span>days
+        </div>
+        :
+        <div class="cell-container">
+          <span class="time" id="hour">0</span>hour
+        </div>
+        :
+        <div class="cell-container">
+          <span class="time" id="minute">0</span>minute
+        </div>
+        :
+        <div class="cell-container">
+          <span class="time" id="second">0</span>second
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const currentDate = new Date();
+    const targetDate = new Date('2023-11-30T18:00:00+09:00');
+
+    const day = document.getElementById('day');
+    const hour = document.getElementById('hour');
+    const minute = document.getElementById('minute');
+    const second = document.getElementById('second');
+
+    function countDown() {
+      const now = new Date();
+      const gap = targetDate - now;
+
+      const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+      const h = Math.floor((gap / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((gap / (1000 * 60)) % 60);
+      const s = Math.floor((gap / 1000) % 60);
+
+      day.innerText = d;
+      hour.innerText = h;
+      minute.innerText = m;
+      second.innerText = s;
+    }
+
+    countDown();
+    setInterval(countDown, 1000);
+
+    console.log('안녕하세요? 콘솔을 키셨네요?');
+  </script>
+</html>
