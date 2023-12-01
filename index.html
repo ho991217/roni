@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>로니님 퇴사까지</title>
+    <title>로니님 퇴사로부터</title>
     <style>
       body {
         margin: 0;
@@ -79,9 +79,9 @@
     const minute = document.getElementById('minute');
     const second = document.getElementById('second');
 
-    function countDown() {
+    function countUp() {
       const now = new Date();
-      const gap = targetDate - now;
+      const gap = now - targetDate;
 
       const d = Math.floor(gap / (1000 * 60 * 60 * 24));
       const h = Math.floor((gap / (1000 * 60 * 60)) % 24);
@@ -94,8 +94,8 @@
       second.innerText = s;
     }
 
-    countDown();
-    setInterval(countDown, 1000);
+    countUp();
+    setInterval(countUp, 1000);
 
     console.log('안녕하세요? 콘솔을 키셨네요?');
   </script>
